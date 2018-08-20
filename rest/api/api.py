@@ -27,9 +27,10 @@ ROOT_PATH = os.path.join(
     )
 from cryption.crypto import sign_and_encrypt, decrypt_and_verify, sign
 
+requests.adapters.DEFAULT_RETRIES = 5
+
 CERT_PATH = os.path.join(ROOT_PATH, "cryption/ecc/certs")
 STATUS_CODE_OK = 200
-
 APIKEY = "pWEzB4yMM1518346407"
 CODE_SERVER_RESP_INVALID = 10000
 CODE_DECRYPT_FAILED = 10001
