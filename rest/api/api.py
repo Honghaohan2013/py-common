@@ -206,9 +206,15 @@ class Client(object):
         :param url: url string
         :Returns: response
         """
-        return requests.get(
+        kwags = {
+            "headers": headers
+            }
+        with requests.sessions.Session() as session:
+            session.keep_alive = False
+            return session.request(
+                method="get",
                 url=url,
-                headers=headers
+                **kwags
                 )
     
     def do_post(self, url, headers, body, files=None):
@@ -220,11 +226,17 @@ class Client(object):
         :param files: files to post
         :Returns: response
         """
-        return requests.post(
+        kwags = {
+            "headers": headers,
+            "data": body,
+            "files": files
+            }
+        with requests.sessions.Session() as session:
+            session.keep_alive = False
+            return session.request(
+                method="post",
                 url=url,
-                headers=headers,
-                data=body,
-                files=files
+                **kwags
                 )
     
     def do_put(self, url, headers, body):
@@ -235,10 +247,16 @@ class Client(object):
         :param body: body dictionary
         :Returns: response
         """
-        return requests.put(
+        kwags = {
+            "headers": headers,
+            "data": body,
+            }
+        with requests.sessions.Session() as session:
+            session.keep_alive = False
+            return session.request(
+                method="put",
                 url=url,
-                headers=headers,
-                data=body
+                **kwags
                 )
 
     def do_patch(self, url, headers, body):
@@ -249,10 +267,16 @@ class Client(object):
         :param body: body dictionary
         :Returns: response
         """
-        return requests.patch(
+        kwags = {
+            "headers": headers,
+            "data": body,
+            }
+        with requests.sessions.Session() as session:
+            session.keep_alive = False
+            return session.request(
+                method="patch",
                 url=url,
-                headers=headers,
-                data=body
+                **kwags
                 )
     
     def do_delete(self, url, headers):
@@ -262,8 +286,14 @@ class Client(object):
         :param url: url string
         :Returns: response
         """
-        return requests.delete(
+        kwags = {
+            "headers": headers,
+            }
+        with requests.sessions.Session() as session:
+            session.keep_alive = False
+            return session.request(
+                method="delete",
                 url=url,
-                headers=headers,
+                **kwags
                 )
     

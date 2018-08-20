@@ -176,7 +176,7 @@ class ApiTest(unittest.TestCase):
                 True
                 )
         request_func = cert_store.do_post
-        with mock.patch('requests.post', mock_do_post):
+        with mock.patch('requests.sessions.Session.request', mock_do_post):
             _, result = cert_store.do_request(
                 {
                     "url": self.uri,
@@ -198,7 +198,7 @@ class ApiTest(unittest.TestCase):
                 True
                 )
         request_func = cert_store.do_post
-        with mock.patch('requests.post', mock_do_post):
+        with mock.patch('requests.sessions.Session.request', mock_do_post):
             _, result = cert_store.do_request(
                 {
                     "url": self.uri,
@@ -222,7 +222,7 @@ class ApiTest(unittest.TestCase):
                 True
                 )
         request_func = cert_store.do_post
-        with mock.patch('requests.post', mock_do_post):
+        with mock.patch('requests.sessions.Session.request', mock_do_post):
             _, result = cert_store.do_request(
                 {
                     "url": self.uri,
@@ -331,7 +331,7 @@ class ApiTest(unittest.TestCase):
                 False
                 )
         request_func = cert_store.do_post
-        with mock.patch('requests.post', mock_do_post):
+        with mock.patch('requests.sessions.Session.request', mock_do_post):
             _, result = cert_store.do_request(
                 {
                     "url": self.uri,
